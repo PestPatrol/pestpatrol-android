@@ -21,4 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "PestPatrol"
 include(":app")
- 
+include(":core:network")
+include(":core:common")
