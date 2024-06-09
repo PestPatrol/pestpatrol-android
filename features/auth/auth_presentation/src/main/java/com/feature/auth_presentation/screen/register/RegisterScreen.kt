@@ -1,6 +1,5 @@
-package com.feature.auth_presentation.screen.login
+package com.feature.auth_presentation.screen.register
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -11,7 +10,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -24,7 +22,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -34,11 +31,9 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.core.common.navigation_constants.AuthFeature
-import com.core.common.resource.IconGoogleCircle
 import com.core.common.ui.HintTextColor
 import com.core.common.ui.Primary200
 import com.core.common.ui.Primary25
-import com.core.common.ui.Primary50
 import com.core.common.ui.Primary500
 import com.core.common.ui.Primary600
 import com.core.common.ui.PrimaryTextColor
@@ -48,10 +43,10 @@ import com.core.common.ui.SFProDisplayRegular
 import com.feature.auth_presentation.R
 
 @Composable
-fun LoginScreen(
+fun RegisterScreen(
     navController: NavController
 ) {
-    val viewModel = hiltViewModel<LoginViewModel>()
+    val viewModel = hiltViewModel<RegisterViewModel>()
 
     Column(
         modifier = Modifier
@@ -67,13 +62,52 @@ fun LoginScreen(
             fontSize = 48.sp
         )
         Text(
-            text = stringResource(R.string.sign_in_to_your_account),
+            text = stringResource(R.string.create_your_plantcare_account),
             fontFamily = SFProDisplayMedium,
             color = PrimaryTextColor,
             fontSize = 20.sp
         )
 
         Spacer(modifier = Modifier.height(48.dp))
+
+        Text(
+            text = stringResource(R.string.full_name),
+            fontFamily = SFProDisplayMedium,
+            color = PrimaryTextColor,
+            fontSize = 16.sp
+        )
+        Spacer(modifier = Modifier.height(8.dp))
+        OutlinedTextField(
+            value = viewModel.fullName.value,
+            onValueChange = {
+                viewModel.fullName.value = it
+            },
+            placeholder = {
+                Text(
+                    text = stringResource(R.string.input_your_full_name),
+                    fontFamily = SFProDisplayRegular,
+                    color = HintTextColor,
+                    fontSize = 13.sp
+                )
+            },
+            colors = OutlinedTextFieldDefaults.colors(
+                unfocusedBorderColor = Primary600,
+                focusedBorderColor = Primary600,
+                focusedContainerColor = Color.Transparent,
+                unfocusedContainerColor = Color.Transparent
+            ),
+            shape = RoundedCornerShape(16.dp),
+            textStyle = TextStyle(
+                fontFamily = SFProDisplayRegular,
+                color = PrimaryTextColor,
+                fontSize = 14.sp
+            ),
+            singleLine = true,
+            modifier = Modifier
+                .fillMaxWidth()
+        )
+
+        Spacer(modifier = Modifier.height(16.dp))
 
         Text(
             text = stringResource(R.string.email),
@@ -89,7 +123,7 @@ fun LoginScreen(
             },
             placeholder = {
                 Text(
-                    text = stringResource(R.string.inputyouremailhere_gmail_com),
+                    text = stringResource(id = R.string.inputyouremailhere_gmail_com),
                     fontFamily = SFProDisplayRegular,
                     color = HintTextColor,
                     fontSize = 13.sp
@@ -166,10 +200,10 @@ fun LoginScreen(
                     .fillMaxWidth()
                     .background(
                         Brush.linearGradient(
-                            colors = if (viewModel.isButtonEnabled.value) listOf(
+                            colors = listOf(
                                 Primary500,
                                 Primary200
-                            ) else listOf(HintTextColor, HintTextColor)
+                            )
                         ),
                         shape = ButtonDefaults.shape
                     ),
@@ -178,61 +212,34 @@ fun LoginScreen(
                 }
             ) {
                 Text(
-                    text = stringResource(R.string.sign_in),
+                    text = stringResource(R.string.sign_up),
                     fontFamily = SFProDisplayBold,
                     color = Color.White,
                     fontSize = 18.sp
                 )
             }
 
-            Text(
-                text = stringResource(R.string.or),
-                fontFamily = SFProDisplayRegular,
-                color = PrimaryTextColor,
-                fontSize = 14.sp
-            )
-
-            Button(
-                colors = ButtonDefaults.buttonColors(containerColor = Primary50),
-                modifier = Modifier
-                    .fillMaxWidth(),
-                onClick = {
-
-                }
-            ) {
-                Image(
-                    painter = painterResource(id = IconGoogleCircle),
-                    contentDescription = stringResource(
-                        R.string.continue_with_google
-                    ),
-                    modifier = Modifier.size(32.dp)
-                )
-                Spacer(modifier = Modifier.width(8.dp))
-                Text(
-                    text = stringResource(id = R.string.continue_with_google),
-                    fontFamily = SFProDisplayBold,
-                    color = Primary600,
-                    fontSize = 18.sp
-                )
-            }
-
             Row {
                 Text(
-                    text = stringResource(R.string.don_t_have_an_account),
+                    text = stringResource(R.string.do_you_have_an_account),
                     fontFamily = SFProDisplayRegular,
                     color = PrimaryTextColor,
                     fontSize = 13.sp
                 )
                 Spacer(modifier = Modifier.width(4.dp))
                 Text(
-                    text = stringResource(R.string.sign_up),
+                    text = stringResource(R.string.sign_in),
                     fontFamily = SFProDisplayRegular,
                     color = Primary600,
                     fontSize = 13.sp,
                     textDecoration = TextDecoration.Underline,
                     modifier = Modifier
                         .clickable {
-                            navController.navigate(AuthFeature.RegisterScreen)
+                            navController.navigate(AuthFeature.RegisterScreen) {
+                                popUpTo(AuthFeature.LoginScreen) {
+                                    inclusive = true
+                                }
+                            }
                         }
                 )
             }

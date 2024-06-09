@@ -1,6 +1,7 @@
-package com.core.common
+package com.core.common.util
 
 import androidx.annotation.StringRes
+import com.core.common.R
 
 sealed class UiText {
     data class DynamicString(val value: String): UiText()

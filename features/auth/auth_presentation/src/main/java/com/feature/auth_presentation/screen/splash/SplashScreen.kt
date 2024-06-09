@@ -8,6 +8,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
@@ -28,17 +29,20 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.core.common.R
 import com.core.common.component.LockScreenOrientation
 import com.core.common.navigation_constants.AuthFeature
+import com.core.common.resource.AppLogo
+import com.core.common.resource.AppLogoDesc
+import com.core.common.resource.AppName
+import com.core.common.ui.BalooBhaijaanRegular
 import com.core.common.ui.Primary100
 import com.core.common.ui.Primary200
 import com.core.common.ui.Primary500
+import com.core.common.ui.SFProDisplayMedium
+import com.feature.auth_presentation.R
 
 @Composable
 fun SplashScreen(
@@ -75,8 +79,8 @@ fun SplashScreen(
             verticalArrangement = Arrangement.Center
         ) {
             Image(
-                painter = painterResource(R.drawable.logo_app),
-                contentDescription = stringResource(R.string.app_logo),
+                painter = painterResource(AppLogo),
+                contentDescription = stringResource(AppLogoDesc),
                 modifier = Modifier
                     .aspectRatio(1f)
                     .width(screenWidth / 3),
@@ -84,8 +88,8 @@ fun SplashScreen(
                 alignment = Alignment.Center
             )
             Text(
-                text = stringResource(R.string.app_name),
-                fontFamily = FontFamily(Font(R.font.baloo_bhaijaan_regular)),
+                text = stringResource(AppName),
+                fontFamily = BalooBhaijaanRegular,
                 color = Color.White,
                 fontSize = 50.sp,
                 modifier = Modifier.offset(y = (-50).dp)
@@ -105,14 +109,15 @@ fun SplashScreen(
                     ),
                     shape = ButtonDefaults.shape
                 ),
+            contentPadding = PaddingValues(horizontal = 32.dp, vertical = 8.dp),
             onClick = {
                 navController.navigate(AuthFeature.LoginScreen)
             }
         ) {
             Text(
-                text = stringResource(com.feature.auth_presentation.R.string.get_started),
+                text = stringResource(R.string.get_started),
                 color = Color.White,
-                fontFamily = FontFamily(Font(R.font.sfprodisplay_medium)),
+                fontFamily = SFProDisplayMedium,
                 fontSize = 20.sp
             )
         }

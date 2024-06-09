@@ -7,6 +7,7 @@ import androidx.navigation.navigation
 import com.bangkit.feature_api.FeatureApi
 import com.core.common.navigation_constants.AuthFeature
 import com.feature.auth_presentation.screen.login.LoginScreen
+import com.feature.auth_presentation.screen.register.RegisterScreen
 import com.feature.auth_presentation.screen.splash.SplashScreen
 
 internal object InternalAuthFeatureApi : FeatureApi {
@@ -26,7 +27,7 @@ internal object InternalAuthFeatureApi : FeatureApi {
             }
 
             composable<AuthFeature.RegisterScreen> {
-
+                RegisterScreen(navController)
             }
         }
     }
