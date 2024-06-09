@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.dagger.hilt.android)
     alias(libs.plugins.kotlin.parcelize)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -53,6 +54,14 @@ android {
 }
 
 dependencies {
+
+    implementation(project(":core:common"))
+    implementation(project(":core:feature_api"))
+
+    // Feat: Auth
+    implementation(project(":features:auth:auth_data"))
+    implementation(project(":features:auth:auth_domain"))
+    implementation(project(":features:auth:auth_presentation"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -123,7 +132,7 @@ dependencies {
     implementation(libs.androidx.paging.compose)
 
     // uCrop
-    implementation(libs.ucrop)
+//    implementation(libs.ucrop)
 
     // Accompanist (Permission)
     implementation(libs.accompanist.permissions)
