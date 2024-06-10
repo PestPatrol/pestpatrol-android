@@ -34,6 +34,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.core.common.navigation_constants.AuthFeature
+import com.core.common.navigation_constants.HomeFeature
 import com.core.common.resource.IconGoogleCircle
 import com.core.common.ui.HintTextColor
 import com.core.common.ui.Primary200
@@ -174,7 +175,11 @@ fun LoginScreen(
                         shape = ButtonDefaults.shape
                     ),
                 onClick = {
-
+                    navController.navigate(HomeFeature.NestedRoute) {
+                        popUpTo<AuthFeature.SplashScreen> {
+                            inclusive = true
+                        }
+                    }
                 }
             ) {
                 Text(

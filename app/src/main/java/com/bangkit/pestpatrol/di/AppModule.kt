@@ -2,6 +2,7 @@ package com.bangkit.pestpatrol.di
 
 import com.bangkit.pestpatrol.navigation.NavigationProvider
 import com.feature.auth_presentation.navigation.AuthApi
+import com.feature.home_presentation.navigation.HomeApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,10 +14,12 @@ object AppModule {
 
     @Provides
     fun provideNavigationProvider(
-        authApi: AuthApi
+        authApi: AuthApi,
+        homeApi: HomeApi
     ): NavigationProvider {
         return NavigationProvider(
-            authApi = authApi
+            authApi = authApi,
+            homeApi = homeApi
         )
     }
 }

@@ -9,7 +9,7 @@ import dagger.hilt.components.SingletonComponent
 
 @Module
 @InstallIn(SingletonComponent::class)
-object AuthUiModule {
+object AuthPresentationModule {
 
     @Provides
     fun provideAuthApi(): AuthApi {

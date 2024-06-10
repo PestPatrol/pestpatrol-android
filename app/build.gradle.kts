@@ -63,6 +63,11 @@ dependencies {
     implementation(project(":features:auth:auth_domain"))
     implementation(project(":features:auth:auth_presentation"))
 
+    // Feat: Home
+    implementation(project(":features:home:home_data"))
+    implementation(project(":features:home:home_domain"))
+    implementation(project(":features:home:home_presentation"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
