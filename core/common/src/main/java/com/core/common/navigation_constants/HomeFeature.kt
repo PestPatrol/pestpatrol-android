@@ -12,5 +12,5 @@ sealed class HomeFeature {
     data object HomeScreen: HomeFeature()
 
     @Serializable
-    data object SnapHistory: HomeFeature()
+    data object SnapHistoryScreen: HomeFeature()
 }

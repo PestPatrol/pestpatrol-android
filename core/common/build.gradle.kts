@@ -62,4 +62,8 @@ dependencies {
 
     // Serialization
     api(libs.kotlinx.serialization.json)
+
+    // Coil
+    api(libs.coil)
+    api(libs.coil.compose)
 }

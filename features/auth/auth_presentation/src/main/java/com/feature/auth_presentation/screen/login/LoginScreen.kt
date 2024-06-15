@@ -202,7 +202,11 @@ fun LoginScreen(
                 modifier = Modifier
                     .fillMaxWidth(),
                 onClick = {
-
+                    navController.navigate(HomeFeature.NestedRoute) {
+                        popUpTo<AuthFeature.SplashScreen> {
+                            inclusive = true
+                        }
+                    }
                 }
             ) {
                 Image(

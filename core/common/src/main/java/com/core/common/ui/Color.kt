@@ -1,5 +1,6 @@
 package com.core.common.ui
 
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 
 val Purple80 = Color(0xFFD0BCFF)
@@ -18,6 +19,31 @@ val Primary300 = Color(0xFF76B200)
 val Primary400 = Color(0xFF67B929)
 val Primary500 = Color(0xFF54B435)
 val Primary600 = Color(0xFF3A791D)
+
+val PrimaryGradient100 = Brush.linearGradient(
+    colors = listOf(
+        Primary500,
+        Primary600
+    )
+)
+val PrimaryGradient200 = Brush.linearGradient(
+    colors = listOf(
+        Primary500,
+        Primary200
+    )
+)
+val PrimaryGradient300 = Brush.linearGradient(
+    colors = listOf(
+        Primary100,
+        Primary500
+    )
+)
+val PrimaryGradient400 = Brush.linearGradient(
+    colors = listOf(
+        Primary500,
+        Primary100
+    )
+)
 
 val PrimaryTextColor = Color(0xFF242424)
 val HintTextColor = Color(0xFFB4B4B4)
