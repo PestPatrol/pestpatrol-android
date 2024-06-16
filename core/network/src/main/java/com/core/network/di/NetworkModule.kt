@@ -1,5 +1,6 @@
 package com.core.network.di
 
+import com.core.network.BuildConfig
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -30,6 +31,7 @@ object NetworkModule {
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
+            .baseUrl(BuildConfig.BASE_URL)
             .build()
     }
 }
