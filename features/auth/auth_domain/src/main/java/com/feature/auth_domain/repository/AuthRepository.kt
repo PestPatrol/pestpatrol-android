@@ -15,5 +15,5 @@ interface AuthRepository {
         request: LoginRequest
     ): LoginResponse
 
-    suspend fun getToken(): String
+    suspend fun checkToken(): Boolean
 }

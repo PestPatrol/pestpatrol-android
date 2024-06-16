@@ -1,5 +1,6 @@
 package com.feature.auth_data.repository
 
+import com.core.common.util.formatBearerToken
 import com.core.network.data.GlobalErrorParser
 import com.core.network.data_store.UserDataStore
 import com.feature.auth_data.mapper.toLoginRequestDto
@@ -40,7 +41,11 @@ class AuthRepositoryImpl(
         throw Exception(error)
     }
 
-    override suspend fun getToken(): String {
-        return userDataStore.getToken().first()
+    override suspend fun checkToken(): Boolean {
+        val token = userDataStore.getToken().first()
+        val response = authService.checkToken(token.formatBearerToken())
+        if (response.isSuccessful) return true
+        userDataStore.clearUserPreferences()
+        return false
     }
 }

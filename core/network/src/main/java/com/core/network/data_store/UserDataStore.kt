@@ -23,6 +23,12 @@ class UserDataStore(
         }
     }
 
+    suspend fun clearUserPreferences() {
+        dataStore.edit { preferences ->
+            preferences[TOKEN_KEY] = ""
+        }
+    }
+
     companion object {
         val TOKEN_KEY = stringPreferencesKey("token")
     }

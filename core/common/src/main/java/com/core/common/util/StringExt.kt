@@ -4,3 +4,5 @@ val String.Companion.Empty
     get() = ""
 
 fun String?.getRouteName() = this?.takeLastWhile { it != '.' }
+
+fun String?.formatBearerToken() = "Bearer $this"
