@@ -3,4 +3,6 @@
     <string name="app_name">PestPatrol</string>
     <string name="app_logo">App logo</string>
     <string name="error_uknown">Unknown error</string>
+    <string name="profile_icon">Profile icon</string>
+    <string name="error_network_connection">Network connection error</string>
 </resources>

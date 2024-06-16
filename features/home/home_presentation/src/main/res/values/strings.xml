@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello_comma">Hello,</string>
+    <string name="menu">Menu</string>
+    <string name="snap_detection">Snap Detection</string>
+    <string name="reminder">Reminder</string>
+    <string name="p_blog">P-Blog</string>
+    <string name="paddy_buddy">Paddy Buddy</string>
+    <string name="new_blogs">New Blogs</string>
+    <string name="see_all">See All</string>
+    <string name="blog_image">Blog Image</string>
+    <string name="read_more">Read More</string>
+    <string name="search_paddy_dots">Search Paddy...</string>
+    <string name="search">Search</string>
+    <string name="home">Home</string>
+    <string name="snap_history">Snap History</string>
+    <string name="search_disease">Search Disease</string>
+</resources>

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">PestPatrol</string>
+    <string name="snap_detection">Snap Detection</string>
 </resources>
