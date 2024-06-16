@@ -1,4 +1,4 @@
-package com.core.network.util
+package com.core.common.util
 
 import android.os.Handler
 import android.os.Looper
