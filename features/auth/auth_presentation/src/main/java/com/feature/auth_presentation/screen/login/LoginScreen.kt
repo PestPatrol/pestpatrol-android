@@ -214,11 +214,12 @@ fun LoginScreen(
                         shape = ButtonDefaults.shape
                     ),
                 onClick = {
-                    navController.navigate(HomeFeature.NestedRoute) {
-                        popUpTo<AuthFeature.SplashScreen> {
-                            inclusive = true
-                        }
-                    }
+//                    navController.navigate(HomeFeature.NestedRoute) {
+//                        popUpTo<AuthFeature.SplashScreen> {
+//                            inclusive = true
+//                        }
+//                    }
+                    viewModel.login()
                 }
             ) {
                 Text(
@@ -246,7 +247,6 @@ fun LoginScreen(
 //                            inclusive = true
 //                        }
 //                    }
-                    viewModel.login()
                 }
             ) {
                 Image(

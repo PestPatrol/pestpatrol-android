@@ -30,13 +30,6 @@ class SplashViewModel @Inject constructor(
     private val _errorMessage = Channel<UiText>()
     val errorMessage = _errorMessage.receiveAsFlow()
 
-    init {
-        viewModelScope.launch {
-            delay(1000L)
-            getToken()
-        }
-    }
-
     fun getToken() {
         networkConnectivity.checkInternetConnection(object :
             NetworkConnectivity.ConnectivityCallback {

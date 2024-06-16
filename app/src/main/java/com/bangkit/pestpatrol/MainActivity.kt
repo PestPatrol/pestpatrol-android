@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
@@ -89,15 +90,17 @@ fun App(
                 )
             },
             floatingActionButton = {
-                Icon(
-                    painter = painterResource(id = com.feature.home_presentation.R.drawable.ic_snap_detection),
-                    contentDescription = stringResource(R.string.snap_detection),
-                    tint = Color.Black,
-                    modifier = Modifier
-                        .offset(y = 48.dp)
-                        .background(Primary50)
-                        .clip(CircleShape)
-                )
+                AnimatedVisibility(visible = isBottomBarVisible) {
+                    Icon(
+                        painter = painterResource(id = com.feature.home_presentation.R.drawable.ic_snap_detection),
+                        contentDescription = stringResource(R.string.snap_detection),
+                        tint = Color.Black,
+                        modifier = Modifier
+                            .offset(y = 48.dp)
+                            .background(Primary50)
+                            .clip(CircleShape)
+                    )
+                }
             },
             floatingActionButtonPosition = FabPosition.Center
         ) {

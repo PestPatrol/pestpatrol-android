@@ -1,5 +1,6 @@
 package com.bangkit.pestpatrol.ui.component
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -33,7 +34,7 @@ fun PestPatrolBottomNavBar(
     screens: List<BottomNavBarItem>,
     currentDestination: NavDestination?
 ) {
-    if (showBottomNavBar) {
+    AnimatedVisibility(showBottomNavBar) {
         BottomNavigation(
             backgroundColor = Primary400,
             modifier = Modifier

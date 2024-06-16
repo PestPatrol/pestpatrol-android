@@ -1,5 +1,6 @@
 package com.feature.auth_data.repository
 
+import android.util.Log
 import com.core.common.util.formatBearerToken
 import com.core.network.data.GlobalErrorParser
 import com.core.network.data_store.UserDataStore
@@ -46,6 +47,6 @@ class AuthRepositoryImpl(
         val response = authService.checkToken(token.formatBearerToken())
         if (response.isSuccessful) return true
         userDataStore.clearUserPreferences()
-        return false
+        throw Exception()
     }
 }

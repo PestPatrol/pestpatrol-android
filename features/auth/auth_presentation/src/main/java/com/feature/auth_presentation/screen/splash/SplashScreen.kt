@@ -51,9 +51,13 @@ import com.core.common.ui.Primary200
 import com.core.common.ui.Primary500
 import com.core.common.ui.SFProDisplayMedium
 import com.core.common.ui.components.LoadingDialog
+import com.core.common.ui.interaction.disableSplitMotionEvents
+import com.core.common.ui.interaction.singleClick
 import com.core.common.util.ObserveAsEvents
+import com.core.common.util.ObserveAsEventsResumed
 import com.core.common.util.UiText
 import com.feature.auth_presentation.R
+import kotlinx.coroutines.delay
 
 @Composable
 fun SplashScreen(
@@ -63,7 +67,10 @@ fun SplashScreen(
     val context = LocalContext.current
 
     val isLoading by viewModel.isLoading
-    var buttonState by remember {
+    var buttonEnabled by remember {
+        mutableStateOf(true)
+    }
+    var buttonVisibility by remember {
         mutableStateOf(false)
     }
 
@@ -94,17 +101,17 @@ fun SplashScreen(
         }
     }
 
-    ObserveAsEvents(flow = viewModel.isTokenAuthorized) {
+    ObserveAsEventsResumed(flow = viewModel.isTokenAuthorized) {
         if (it) {
             navController.navigate(HomeFeature.NestedRoute) {
                 popUpTo<AuthFeature.SplashScreen> {
                     inclusive = true
                 }
             }
-            return@ObserveAsEvents
+            return@ObserveAsEventsResumed
         }
 
-        buttonState = true
+        buttonVisibility = true
     }
 
     LaunchedEffect(Unit) {
@@ -114,6 +121,8 @@ fun SplashScreen(
                 durationMillis = 2000
             )
         )
+        delay(1000L)
+        viewModel.getToken()
     }
 
     if (isLoading)
@@ -152,7 +161,7 @@ fun SplashScreen(
         }
 
         AnimatedVisibility(
-            visible = buttonState,
+            visible = buttonVisibility,
             modifier = Modifier.align(Alignment.BottomCenter)
         ) {
             Button(
@@ -166,9 +175,12 @@ fun SplashScreen(
                             )
                         ),
                         shape = ButtonDefaults.shape
-                    ),
+                    )
+                    .disableSplitMotionEvents(),
                 contentPadding = PaddingValues(horizontal = 32.dp, vertical = 8.dp),
-                onClick = {
+                enabled = buttonEnabled,
+                onClick = singleClick {
+                    buttonEnabled = false
                     navController.navigate(AuthFeature.LoginScreen)
                 }
             ) {
