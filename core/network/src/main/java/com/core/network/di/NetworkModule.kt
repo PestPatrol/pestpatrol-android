@@ -1,6 +1,8 @@
 package com.core.network.di
 
 import com.core.network.BuildConfig
+import com.core.network.data.GlobalErrorParser
+import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,6 +15,9 @@ import java.util.concurrent.TimeUnit
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
+
+    @Provides
+    fun provideGson(): Gson = Gson()
 
     @Provides
     fun provideOkHttpClient(): OkHttpClient {
@@ -34,4 +39,9 @@ object NetworkModule {
             .baseUrl(BuildConfig.BASE_URL)
             .build()
     }
+
+    @Provides
+    fun provideGlobalErrorParser(
+        gson: Gson
+    ) = GlobalErrorParser(gson)
 }
