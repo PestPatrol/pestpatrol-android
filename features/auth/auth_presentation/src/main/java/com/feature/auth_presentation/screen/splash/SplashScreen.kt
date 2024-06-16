@@ -96,7 +96,11 @@ fun SplashScreen(
 
     ObserveAsEvents(flow = viewModel.isTokenAuthorized) {
         if (it) {
-            navController.navigate(HomeFeature.HomeScreen)
+            navController.navigate(HomeFeature.NestedRoute) {
+                popUpTo<AuthFeature.SplashScreen> {
+                    inclusive = true
+                }
+            }
             return@ObserveAsEvents
         }
 
