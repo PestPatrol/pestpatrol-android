@@ -2,6 +2,7 @@ package com.feature.home_domain.di
 
 import com.feature.home_domain.repository.HomeRepository
 import com.feature.home_domain.use_case.GetAllArticlesUseCase
+import com.feature.home_domain.use_case.GetProfileUseCase
 import com.feature.home_domain.use_case.HomeUseCases
 import dagger.Module
 import dagger.Provides
@@ -16,6 +17,7 @@ object HomeDomainModule {
     fun provideHomeUseCases(
         homeRepository: HomeRepository
     ) = HomeUseCases(
-        getAllArticlesUseCase = GetAllArticlesUseCase(homeRepository)
+        getAllArticlesUseCase = GetAllArticlesUseCase(homeRepository),
+        getProfileUseCase = GetProfileUseCase(homeRepository)
     )
 }

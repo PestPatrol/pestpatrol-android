@@ -1,6 +1,5 @@
 package com.feature.auth_data.remote.dto
 
-import com.core.network.data.dto.ArticleResponse
 import com.google.gson.annotations.SerializedName
 
 data class RegisterResponseDto(
@@ -21,7 +20,7 @@ data class RegisterUser(
 	val reminders: List<Any?>? = null,
 
 	@field:SerializedName("favArticles")
-	val favArticles: List<ArticleResponse?>? = null,
+	val favArticles: List<Any?>? = null,
 
 	@field:SerializedName("password")
 	val password: String? = null,

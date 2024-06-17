@@ -1,5 +1,6 @@
 package com.feature.home_presentation.screen.home
 
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -14,18 +15,23 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
+import coil.compose.SubcomposeAsyncImage
 import com.core.common.resource.IconProfileRounded
 import com.core.common.resource.ProfileIcon
 import com.core.common.ui.Primary25
@@ -34,6 +40,9 @@ import com.core.common.ui.Primary600
 import com.core.common.ui.PrimaryTextColor
 import com.core.common.ui.SFProDisplayBold
 import com.core.common.ui.SFProDisplayMedium
+import com.core.common.util.Empty
+import com.core.common.util.ObserveAsEvents
+import com.core.common.util.UiText
 import com.feature.home_presentation.R
 import com.feature.home_presentation.screen.component.HomeMenu
 import com.feature.home_presentation.screen.component.HomeSearchField
@@ -45,6 +54,7 @@ fun HomeScreen(
     navController: NavController
 ) {
     val viewModel = hiltViewModel<HomeViewModel>()
+    val context = LocalContext.current
     val homeMenuItems = listOf(
         HomeMenuItem(
             iconPainter = painterResource(id = R.drawable.ic_snap_detection),
@@ -67,6 +77,48 @@ fun HomeScreen(
             menuTitle = stringResource(id = R.string.paddy_buddy)
         ),
     )
+    val profile by viewModel.profileData.collectAsStateWithLifecycle(initialValue = null)
+    val articles by viewModel.articleData.collectAsStateWithLifecycle(initialValue = emptyList())
+
+    ObserveAsEvents(flow = viewModel.articleError) { uiText ->
+        when (uiText) {
+            is UiText.DynamicString -> {
+                Toast.makeText(
+                    context,
+                    uiText.value,
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
+            is UiText.StringResource -> {
+                Toast.makeText(
+                    context,
+                    context.getString(uiText.id),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+    }
+
+    ObserveAsEvents(flow = viewModel.profileError) { uiText ->
+        when (uiText) {
+            is UiText.DynamicString -> {
+                Toast.makeText(
+                    context,
+                    uiText.value,
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
+            is UiText.StringResource -> {
+                Toast.makeText(
+                    context,
+                    context.getString(uiText.id),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+    }
 
     LazyColumn(
         modifier = Modifier
@@ -94,13 +146,19 @@ fun HomeScreen(
                         fontSize = 24.sp,
                     )
                     Text(
-                        text = "Erika Dwi Puspitasari",
+                        text = profile?.fullName.toString(),
                         fontFamily = SFProDisplayBold,
                         color = Primary600,
                         fontSize = 28.sp,
                     )
                 }
 
+                SubcomposeAsyncImage(
+                    model = profile?.profPicLink,
+                    contentDescription = stringResource(id = ProfileIcon)
+                ) {
+
+                }
                 Icon(
                     painter = painterResource(id = IconProfileRounded),
                     contentDescription = stringResource(id = ProfileIcon),
@@ -184,11 +242,11 @@ fun HomeScreen(
                 item {
                     Spacer(modifier = Modifier.width(16.dp))
                 }
-                items(5) {
+                items(articles) { article ->
                     NewBlog(
-                        imageUrl = "https://img.etimg.com/thumb/width-1600,height-900,imgsize-98586,resizemode-75,msid-93695051/news/economy/agriculture/paddy-sowing-continues-to-lag-acreage-down-by-8-25-per-cent-till-august-18.jpg",
-                        blogTag = "PlantTips $it",
-                        blogDescription = "Ini dia tips menanam padi anti gagal panen! $it",
+                        imageUrl = article.pictureLink,
+                        blogTag = article.category,
+                        blogDescription = article.content,
                         onClick = {
 
                         },
@@ -196,11 +254,25 @@ fun HomeScreen(
                             .width(250.dp)
                             .height(225.dp)
                     )
+//                    NewBlog(
+//                        imageUrl = "https://img.etimg.com/thumb/width-1600,height-900,imgsize-98586,resizemode-75,msid-93695051/news/economy/agriculture/paddy-sowing-continues-to-lag-acreage-down-by-8-25-per-cent-till-august-18.jpg",
+//                        blogTag = "PlantTips $it",
+//                        blogDescription = "Ini dia tips menanam padi anti gagal panen! $it",
+//                        onClick = {
+//
+//                        },
+//                        modifier = Modifier
+//                            .width(250.dp)
+//                            .height(225.dp)
+//                    )
                 }
                 item {
                     Spacer(modifier = Modifier.width(16.dp))
                 }
             }
+        }
+        item {
+            Spacer(modifier = Modifier.height(48.dp))
         }
     }
 }
