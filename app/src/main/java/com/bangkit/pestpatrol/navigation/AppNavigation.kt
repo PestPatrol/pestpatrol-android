@@ -19,12 +19,12 @@ fun AppNavGraph(
 ) {
 
     Box(
-        modifier = Modifier.padding(
-            if (showBottomNavBar)
-                PaddingValues(bottom = paddingValues.calculateBottomPadding())
-            else
-                PaddingValues(0.dp)
-        )
+//        modifier = Modifier.padding(
+//            if (showBottomNavBar)
+//                PaddingValues(bottom = paddingValues.calculateBottomPadding())
+//            else
+//                PaddingValues(0.dp)
+//        )
     ) {
         NavHost(
             navController = navController,

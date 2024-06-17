@@ -38,7 +38,7 @@ fun PestPatrolBottomNavBar(
         BottomNavigation(
             backgroundColor = Primary400,
             modifier = Modifier
-                .background(Primary25)
+                .background(Color.Transparent)
                 .clip(RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp))
                 .height(64.dp)
         ) {

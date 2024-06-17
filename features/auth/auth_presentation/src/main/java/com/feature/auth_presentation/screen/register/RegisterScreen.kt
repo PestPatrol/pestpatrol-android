@@ -44,6 +44,7 @@ import com.core.common.ui.SFProDisplayBold
 import com.core.common.ui.SFProDisplayMedium
 import com.core.common.ui.SFProDisplayRegular
 import com.core.common.ui.components.LoadingDialog
+import com.core.common.ui.interaction.singleClick
 import com.core.common.util.ObserveAsEvents
 import com.core.common.util.UiText
 import com.feature.auth_presentation.R
@@ -248,7 +249,7 @@ fun RegisterScreen(
                         ),
                         shape = ButtonDefaults.shape
                     ),
-                onClick = {
+                onClick = singleClick {
                     viewModel.register()
                 }
             ) {
