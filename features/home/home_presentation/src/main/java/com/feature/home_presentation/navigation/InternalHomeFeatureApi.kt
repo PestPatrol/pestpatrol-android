@@ -4,7 +4,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
-import com.bangkit.feature_api.FeatureApi
+import com.feature.feature_api.FeatureApi
 import com.core.common.navigation_constants.HomeFeature
 import com.feature.home_presentation.screen.home.HomeScreen
 import com.feature.home_presentation.screen.snap_history.SnapHistoryScreen
