@@ -13,4 +13,7 @@ sealed class SnapDetectionFeature {
 
     @Serializable
     data object CameraScreen : SnapDetectionFeature()
+
+    @Serializable
+    data object PredictionResultScreen : SnapDetectionFeature()
 }

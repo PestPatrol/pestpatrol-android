@@ -21,10 +21,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -38,6 +34,7 @@ import androidx.compose.ui.unit.sp
 import androidx.core.app.ActivityCompat
 import androidx.navigation.NavController
 import com.core.common.component.findActivity
+import com.core.common.navigation_constants.SnapDetectionFeature
 import com.core.common.resource.IconArrowBack
 import com.core.common.resource.IconCamera
 import com.core.common.resource.IconImport
@@ -59,9 +56,6 @@ fun ChooseImageScreen(
     navController: NavController
 ) {
     val context = LocalContext.current
-    var backButtonState by remember {
-        mutableStateOf(true)
-    }
 
     Box(
         modifier = Modifier
@@ -71,20 +65,18 @@ fun ChooseImageScreen(
     ) {
         IconButton(
             modifier = Modifier
-                .padding(top = 48.dp)
+                .size(36.dp)
                 .align(Alignment.TopStart)
-                .offset(y = (-48).dp)
                 .disableSplitMotionEvents(),
-            enabled = backButtonState,
             onClick = singleClick {
-                backButtonState = false
-                navController.popBackStack()
+                navController.navigateUp()
             }
         ) {
             Icon(
                 painter = painterResource(id = IconArrowBack),
                 contentDescription = stringResource(id = R.string.back),
                 tint = Primary600,
+                modifier = Modifier.size(36.dp)
             )
         }
         Column(
@@ -124,7 +116,8 @@ fun ChooseImageScreen(
                     .background(
                         brush = PrimaryGradient200,
                         shape = ButtonDefaults.shape
-                    ),
+                    )
+                    .padding(8.dp),
                 onClick = singleClick {
                     if (!PermissionUtil.hasRequiredPermission(
                             context,
@@ -147,7 +140,7 @@ fun ChooseImageScreen(
                         return@singleClick
                     }
 
-
+                    navController.navigate(SnapDetectionFeature.CameraScreen)
                 }
             ) {
                 Row(
@@ -185,7 +178,8 @@ fun ChooseImageScreen(
                     .background(
                         brush = PrimaryGradient200,
                         shape = ButtonDefaults.shape
-                    ),
+                    )
+                    .padding(8.dp),
                 onClick = singleClick {
 
                 }

@@ -13,7 +13,7 @@ interface SnapDetectionService {
 
     @Multipart
     @POST("predict")
-    fun predict(
+    suspend fun predict(
         @Header("Authorization") token: String,
         @Part file: MultipartBody.Part
     ): Response<BaseResponse<PredictResponseDto>>

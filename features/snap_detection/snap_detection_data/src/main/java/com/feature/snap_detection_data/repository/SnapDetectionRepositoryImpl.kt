@@ -1,6 +1,7 @@
 package com.feature.snap_detection_data.repository
 
 import android.app.Application
+import android.graphics.Bitmap
 import android.net.Uri
 import com.core.common.util.FileUtil
 import com.core.common.util.formatBearerToken
@@ -23,6 +24,29 @@ class SnapDetectionRepositoryImpl(
 ): SnapDetectionRepository {
     override suspend fun predict(uri: Uri): PredictResponse {
         val file = FileUtil.uriToFile(uri, application)
+        val reducedFile = FileUtil.reduceFileImage(file)
+        val requestImageFile = reducedFile.asRequestBody("image/jpeg".toMediaTypeOrNull())
+        val imageMultipart = MultipartBody.Part.createFormData(
+            "image-predict",
+            reducedFile.name,
+            requestImageFile
+        )
+
+        val token = userDataStore.getToken().first()
+        val response = snapDetectionService.predict(
+            token = token.formatBearerToken(),
+            file = imageMultipart
+        )
+
+        if (response.isSuccessful) {
+            response.body()?.let { data -> return data.data?.toPredictResponse() ?: throw NullPointerException() }
+        }
+        val error = globalErrorParser.parse(response.errorBody()?.string())
+        throw Exception(error)
+    }
+
+    override suspend fun predict(bitmap: Bitmap): PredictResponse {
+        val file = FileUtil.bitmapToFile(bitmap, application)
         val reducedFile = FileUtil.reduceFileImage(file)
         val requestImageFile = reducedFile.asRequestBody("image/jpeg".toMediaTypeOrNull())
         val imageMultipart = MultipartBody.Part.createFormData(

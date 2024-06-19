@@ -1,5 +1,6 @@
 package com.feature.snap_detection.use_case
 
+import android.graphics.Bitmap
 import android.net.Uri
 import com.core.common.util.Resource
 import com.core.common.util.UiText
@@ -18,6 +19,17 @@ class PredictUseCase(
         emit(Resource.Loading())
         try {
             val response = repository.predict(uri)
+            emit(Resource.Success(response))
+        } catch (e: Exception) {
+            emit(Resource.Error(UiText.DynamicString(e.message.toString())))
+        }
+    }
+        .flowOn(Dispatchers.IO)
+
+    operator fun invoke(bitmap: Bitmap): Flow<Resource<PredictResponse>> = flow {
+        emit(Resource.Loading())
+        try {
+            val response = repository.predict(bitmap)
             emit(Resource.Success(response))
         } catch (e: Exception) {
             emit(Resource.Error(UiText.DynamicString(e.message.toString())))

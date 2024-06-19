@@ -20,6 +20,8 @@ val Primary400 = Color(0xFF67B929)
 val Primary500 = Color(0xFF54B435)
 val Primary600 = Color(0xFF3A791D)
 
+val RedPrediction = Color(0xFFFF3D00)
+
 val PrimaryGradient100 = Brush.linearGradient(
     colors = listOf(
         Primary500,

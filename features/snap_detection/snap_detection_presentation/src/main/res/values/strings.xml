@@ -10,4 +10,20 @@
     <string name="import_picture">Import</string>
     <string name="from_your_gallery">from your gallery</string>
     <string name="error_failed_to_make_permissions_request">Failed to make permissions request</string>
+    <string name="snap_tips">Snap Tips</string>
+    <string name="center_grid">Center Grid</string>
+    <string name="error_while_taking_a_photo">Error while taking a photo</string>
+    <string name="result">Result</string>
+    <string name="prediction_image">Prediction Image</string>
+    <string name="disease_status">Disease Status</string>
+    <string name="healthy_no_disease">Healthy - No Disease</string>
+    <string name="disease_identified">Disease Identified</string>
+    <string name="type_of_disease">Type of Disease</string>
+    <string name="confidence">Confidence</string>
+    <string name="cause_of_the_disease">Cause of the Disease</string>
+    <string name="imprecise_cultural_techniques_colon">Imprecise cultural techniques:</string>
+    <string name="imprecise_cultural_techniques">Imprecise cultural techniques</string>
+    <string name="paddy_care">Paddy Care</string>
+    <string name="dropdown">Dropdown</string>
+    <string name="no_description">No Description</string>
 </resources>

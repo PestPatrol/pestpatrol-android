@@ -41,6 +41,19 @@ object FileUtil {
         return file
     }
 
+    fun bitmapToFile(selectedBitmap: Bitmap, context: Context): File {
+        val file = createCustomTempFile(context)
+        val bos = ByteArrayOutputStream()
+        selectedBitmap.compress(Bitmap.CompressFormat.PNG, 0, bos)
+        val bitmapData = bos.toByteArray()
+
+        val fos = FileOutputStream(file)
+        fos.write(bitmapData)
+        fos.flush()
+        fos.close()
+        return file
+    }
+
     fun reduceFileImage(file: File): File {
         val bitmap = BitmapFactory.decodeFile(file.path)
 
