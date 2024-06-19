@@ -46,6 +46,8 @@ dependencies {
     implementation(project(":core:common"))
     implementation(project(":core:feature_api"))
 
+    implementation(project(":features:home:home_domain"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     testImplementation(libs.junit)

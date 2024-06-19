@@ -1,6 +1,7 @@
 package com.feature.home_presentation.screen.component
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -30,7 +31,8 @@ fun HomeMenu(
     iconPainter: Painter,
     iconContentDescription: String,
     menuTitle: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit = {}
 ) {
     Column(
         modifier = modifier,
@@ -48,6 +50,7 @@ fun HomeMenu(
                     shape = RoundedCornerShape(20.dp)
                 )
                 .padding(16.dp)
+                .clickable(onClick = onClick)
         ) {
             Icon(
                 painter = iconPainter,

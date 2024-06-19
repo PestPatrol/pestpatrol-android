@@ -70,6 +70,9 @@ dependencies {
     api(libs.coil)
     api(libs.coil.compose)
 
+    // Shimmer
+    implementation(libs.compose.shimmer)
+
     // Dagger - Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)

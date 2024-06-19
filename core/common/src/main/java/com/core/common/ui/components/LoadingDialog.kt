@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
@@ -24,7 +25,9 @@ fun LoadingDialog(
     ) {
         CircularProgressIndicator(
             color = Primary600,
-            modifier = modifier.size(300.dp)
+            strokeWidth = 16.dp,
+            strokeCap = StrokeCap.Square,
+            modifier = modifier.size(150.dp)
         )
     }
 }

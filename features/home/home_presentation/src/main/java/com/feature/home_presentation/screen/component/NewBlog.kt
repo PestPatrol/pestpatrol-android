@@ -24,13 +24,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil.compose.AsyncImage
+import coil.compose.SubcomposeAsyncImage
 import com.core.common.resource.IconArrowForward
 import com.core.common.ui.Primary600
 import com.core.common.ui.PrimaryGradient200
 import com.core.common.ui.PrimaryTextColor
 import com.core.common.ui.SFProDisplayMedium
 import com.core.common.ui.SFProDisplayRegular
+import com.core.common.ui.components.ShimmerBox
 import com.feature.home_presentation.R
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -54,10 +55,16 @@ fun NewBlog(
                 modifier = Modifier
                     .weight(1f)
             ) {
-                AsyncImage(
+                SubcomposeAsyncImage(
                     model = imageUrl,
                     contentDescription = stringResource(R.string.blog_image),
                     contentScale = ContentScale.Crop,
+                    loading = {
+                        ShimmerBox(
+                            modifier = Modifier.fillMaxSize(),
+                            roundedCorner = RoundedCornerShape(0.dp)
+                        )
+                    },
                     modifier = Modifier.fillMaxWidth()
                 )
                 Box(

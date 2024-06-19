@@ -68,6 +68,11 @@ dependencies {
     implementation(project(":features:home:home_domain"))
     implementation(project(":features:home:home_presentation"))
 
+    // Feat: Snap Detection
+    implementation(project(":features:snap_detection:snap_detection_data"))
+    implementation(project(":features:snap_detection:snap_detection_domain"))
+    implementation(project(":features:snap_detection:snap_detection_presentation"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)

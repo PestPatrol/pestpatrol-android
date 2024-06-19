@@ -2,10 +2,7 @@ package com.bangkit.pestpatrol.navigation
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.core.common.navigation_constants.AuthFeature
@@ -19,12 +16,12 @@ fun AppNavGraph(
 ) {
 
     Box(
-        modifier = Modifier.padding(
-            if (showBottomNavBar)
-                PaddingValues(bottom = paddingValues.calculateBottomPadding())
-            else
-                PaddingValues(0.dp)
-        )
+//        modifier = Modifier.padding(
+//            if (showBottomNavBar)
+//                PaddingValues(bottom = paddingValues.calculateBottomPadding())
+//            else
+//                PaddingValues(0.dp)
+//        )
     ) {
         NavHost(
             navController = navController,
@@ -35,6 +32,10 @@ fun AppNavGraph(
                 navGraphBuilder = this
             )
             navigationProvider.homeApi.registerGraph(
+                navController = navController,
+                navGraphBuilder = this
+            )
+            navigationProvider.snapDetectionApi.registerGraph(
                 navController = navController,
                 navGraphBuilder = this
             )

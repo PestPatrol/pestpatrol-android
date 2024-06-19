@@ -4,4 +4,4 @@ import com.core.common.R
 
 val AppLogoDesc = R.string.app_logo
 val AppName = R.string.app_name
-val ProfileIcon = R.string.profile_icon
+val ProfileIconDescription = R.string.profile_icon

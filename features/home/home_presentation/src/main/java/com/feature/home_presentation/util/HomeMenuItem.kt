@@ -5,5 +5,6 @@ import androidx.compose.ui.graphics.painter.Painter
 data class HomeMenuItem(
     val iconPainter: Painter,
     val iconContentDesc: String,
-    val menuTitle: String
+    val menuTitle: String,
+    val onClick: () -> Unit = {}
 )

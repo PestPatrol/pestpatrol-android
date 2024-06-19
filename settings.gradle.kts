@@ -36,3 +36,8 @@ include(":features:auth:auth_presentation")
 include(":features:home:home_data")
 include(":features:home:home_domain")
 include(":features:home:home_presentation")
+
+// Snap Detection
+include(":features:snap_detection:snap_detection_domain")
+include(":features:snap_detection:snap_detection_data")
+include(":features:snap_detection:snap_detection_presentation")
