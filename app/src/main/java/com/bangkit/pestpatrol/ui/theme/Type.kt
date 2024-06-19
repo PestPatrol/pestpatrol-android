@@ -1,4 +1,4 @@
-package com.feature.pestpatrol.ui.theme
+package com.bangkit.pestpatrol.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

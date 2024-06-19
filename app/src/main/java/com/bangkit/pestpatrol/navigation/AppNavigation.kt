@@ -1,4 +1,4 @@
-package com.feature.pestpatrol.navigation
+package com.bangkit.pestpatrol.navigation
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -32,6 +32,10 @@ fun AppNavGraph(
                 navGraphBuilder = this
             )
             navigationProvider.homeApi.registerGraph(
+                navController = navController,
+                navGraphBuilder = this
+            )
+            navigationProvider.snapDetectionApi.registerGraph(
                 navController = navController,
                 navGraphBuilder = this
             )

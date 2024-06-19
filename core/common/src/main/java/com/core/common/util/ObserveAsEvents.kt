@@ -13,7 +13,7 @@ import kotlinx.coroutines.withContext
 fun <T> ObserveAsEvents(flow: Flow<T>, onEvent: (T) -> Unit) {
     val lifecycleOwner = LocalLifecycleOwner.current
     LaunchedEffect(flow, lifecycleOwner.lifecycle) {
-        lifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+        lifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED) {
             withContext(Dispatchers.Main.immediate) {
                 flow.collect(onEvent)
             }

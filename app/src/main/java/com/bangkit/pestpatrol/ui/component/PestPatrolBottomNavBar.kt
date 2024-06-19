@@ -1,7 +1,8 @@
-package com.feature.pestpatrol.ui.component
+package com.bangkit.pestpatrol.ui.component
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.BottomNavigation
@@ -19,10 +20,11 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
-import androidx.navigation.NavGraph.Companion.findStartDestination
+import com.core.common.navigation_constants.SnapDetectionFeature
 import com.core.common.ui.Primary400
 import com.core.common.ui.Primary50
 import com.core.common.ui.SFProDisplayMedium
+import com.core.common.ui.interaction.singleClick
 import com.core.common.util.getRouteName
 import com.feature.home_presentation.util.BottomNavBarItem
 
@@ -30,7 +32,7 @@ import com.feature.home_presentation.util.BottomNavBarItem
 fun PestPatrolBottomNavBar(
     navController: NavController,
     showBottomNavBar: Boolean,
-    screens: List<BottomNavBarItem>,
+    screens: List<BottomNavBarItem<Any>>,
     currentDestination: NavDestination?
 ) {
     AnimatedVisibility(showBottomNavBar) {
@@ -39,33 +41,45 @@ fun PestPatrolBottomNavBar(
             modifier = Modifier
                 .background(Color.Transparent)
                 .clip(RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp))
-                .height(64.dp)
+                .height(80.dp)
         ) {
             screens.forEach { screen ->
                 BottomNavigationItem(
-                    selected = currentDestination?.hierarchy?.any {
+                    selected =
+                    currentDestination?.hierarchy?.any {
                         it.route.getRouteName() == screen.route.toString()
                     } == true,
-                    onClick = {
-                        navController.navigate(screen.route) {
-                            popUpTo(navController.graph.findStartDestination().id)
-                            launchSingleTop = true
-                        }
+                    onClick = singleClick {
+                        if (screen.route.toString() == SnapDetectionFeature.NestedRoute.toString())
+                            navController.navigate(SnapDetectionFeature.NestedRoute)
+
+                        if (screen.route.toString() != currentDestination?.route.getRouteName())
+                            navController.navigate(screen.route ?: return@singleClick) {
+                                popUpTo(navController.graph.id) {
+                                    saveState = true
+                                    inclusive = true
+                                }
+                                restoreState = true
+                            }
                     },
                     icon = {
-                        Icon(
-                            painter = painterResource(id = screen.iconRes),
-                            contentDescription = stringResource(
-                                id = screen.titleRes
-                            ),
-                        )
+                        if (screen.iconRes != null) {
+                            Icon(
+                                painter = painterResource(id = screen.iconRes!!),
+                                contentDescription = stringResource(
+                                    id = screen.titleRes!!
+                                ),
+                            )
+                            Spacer(modifier = Modifier.height(12.dp))
+                        }
                     },
                     label = {
-                        Text(
-                            text = stringResource(id = screen.titleRes),
-                            fontFamily = SFProDisplayMedium,
-                            fontSize = 16.sp
-                        )
+                        if (screen.titleRes != null)
+                            Text(
+                                text = stringResource(id = screen.titleRes!!),
+                                fontFamily = SFProDisplayMedium,
+                                fontSize = 16.sp
+                            )
                     },
                     unselectedContentColor = Color.White,
                     selectedContentColor = Primary50

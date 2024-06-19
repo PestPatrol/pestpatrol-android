@@ -2,4 +2,11 @@
 <resources>
     <string name="back">Back</string>
     <string name="choose_prediction_image">Choose prediction image</string>
+    <string name="snap_detection">Snap Detection</string>
+    <string name="choose_image_description">Add photos of your rice plants and get disease diagnosis results quickly.</string>
+    <string name="take_a_picture">Take a picture</string>
+    <string name="of_your_plant">of your plant</string>
+    <string name="camera">Camera</string>
+    <string name="import_picture">Import</string>
+    <string name="from_your_gallery">from your gallery</string>
 </resources>

@@ -243,11 +243,11 @@ fun LoginScreen(
                 modifier = Modifier
                     .fillMaxWidth(),
                 onClick = singleClick {
-//                    navController.navigate(HomeFeature.NestedRoute) {
-//                        popUpTo<AuthFeature.SplashScreen> {
-//                            inclusive = true
-//                        }
-//                    }
+                    Toast.makeText(
+                        context,
+                        context.getString(R.string.coming_soon),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             ) {
                 Image(

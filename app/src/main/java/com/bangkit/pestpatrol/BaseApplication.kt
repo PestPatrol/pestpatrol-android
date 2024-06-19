@@ -1,4 +1,4 @@
-package com.feature.pestpatrol
+package com.bangkit.pestpatrol
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

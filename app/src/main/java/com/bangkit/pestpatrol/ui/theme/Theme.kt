@@ -1,4 +1,4 @@
-package com.feature.pestpatrol.ui.theme
+package com.bangkit.pestpatrol.ui.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
