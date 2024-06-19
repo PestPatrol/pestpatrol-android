@@ -47,3 +47,4 @@ val PrimaryGradient400 = Brush.linearGradient(
 
 val PrimaryTextColor = Color(0xFF242424)
 val HintTextColor = Color(0xFFB4B4B4)
+val GrayBasic = Color(0xFF808080)

@@ -1,5 +1,6 @@
 package com.feature.snap_detection_presentation.screen.choose_image
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -28,12 +29,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.app.ActivityCompat
 import androidx.navigation.NavController
+import com.core.common.component.findActivity
 import com.core.common.resource.IconArrowBack
 import com.core.common.resource.IconCamera
 import com.core.common.resource.IconImport
@@ -47,13 +51,14 @@ import com.core.common.ui.SFProDisplayMedium
 import com.core.common.ui.SFProDisplayRegular
 import com.core.common.ui.interaction.disableSplitMotionEvents
 import com.core.common.ui.interaction.singleClick
+import com.core.common.util.PermissionUtil
 import com.feature.snap_detection_presentation.R
 
 @Composable
 fun ChooseImageScreen(
     navController: NavController
 ) {
-
+    val context = LocalContext.current
     var backButtonState by remember {
         mutableStateOf(true)
     }
@@ -95,7 +100,7 @@ fun ChooseImageScreen(
                     .aspectRatio(1f)
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp),
-                contentScale = ContentScale.Crop
+                contentScale = ContentScale.FillBounds
             )
             Text(
                 text = stringResource(R.string.snap_detection),
@@ -121,6 +126,27 @@ fun ChooseImageScreen(
                         shape = ButtonDefaults.shape
                     ),
                 onClick = singleClick {
+                    if (!PermissionUtil.hasRequiredPermission(
+                            context,
+                            PermissionUtil.CAMERA_PERMISSION
+                        )
+                    ) {
+                        try {
+                            ActivityCompat.requestPermissions(
+                                context.findActivity()!!,
+                                arrayOf(PermissionUtil.CAMERA_PERMISSION),
+                                0
+                            )
+                        } catch (e: Exception) {
+                            Toast.makeText(
+                                context,
+                                context.getString(R.string.error_failed_to_make_permissions_request),
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                        return@singleClick
+                    }
+
 
                 }
             ) {

@@ -35,7 +35,7 @@ fun PestPatrolBottomNavBar(
     screens: List<BottomNavBarItem<Any>>,
     currentDestination: NavDestination?
 ) {
-    AnimatedVisibility(showBottomNavBar) {
+    if(showBottomNavBar) {
         BottomNavigation(
             backgroundColor = Primary400,
             modifier = Modifier
@@ -50,8 +50,10 @@ fun PestPatrolBottomNavBar(
                         it.route.getRouteName() == screen.route.toString()
                     } == true,
                     onClick = singleClick {
-                        if (screen.route.toString() == SnapDetectionFeature.NestedRoute.toString())
+                        if (screen.route.toString() == SnapDetectionFeature.NestedRoute.toString()) {
                             navController.navigate(SnapDetectionFeature.NestedRoute)
+                            return@singleClick
+                        }
 
                         if (screen.route.toString() != currentDestination?.route.getRouteName())
                             navController.navigate(screen.route ?: return@singleClick) {
@@ -78,7 +80,7 @@ fun PestPatrolBottomNavBar(
                             Text(
                                 text = stringResource(id = screen.titleRes!!),
                                 fontFamily = SFProDisplayMedium,
-                                fontSize = 16.sp
+                                fontSize = 14.sp
                             )
                     },
                     unselectedContentColor = Color.White,

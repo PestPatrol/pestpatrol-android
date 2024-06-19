@@ -41,5 +41,4 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     api(libs.androidx.navigation.compose)
-    api(libs.compose.shimmer)
 }

@@ -9,4 +9,5 @@
     <string name="camera">Camera</string>
     <string name="import_picture">Import</string>
     <string name="from_your_gallery">from your gallery</string>
+    <string name="error_failed_to_make_permissions_request">Failed to make permissions request</string>
 </resources>

@@ -41,12 +41,7 @@ class HomeViewModel @Inject constructor(
     private val _profileError = Channel<UiText>()
     val profileError = _profileError.receiveAsFlow()
 
-    init {
-        getAllArticles()
-        getProfile()
-    }
-
-    private fun getAllArticles() {
+    fun getAllArticles() {
         networkConnectivity.checkInternetConnection(object :
             NetworkConnectivity.ConnectivityCallback {
             override fun onDetected(isConnected: Boolean) {
@@ -80,7 +75,7 @@ class HomeViewModel @Inject constructor(
         })
     }
 
-    private fun getProfile() {
+    fun getProfile() {
         networkConnectivity.checkInternetConnection(object :
             NetworkConnectivity.ConnectivityCallback {
             override fun onDetected(isConnected: Boolean) {

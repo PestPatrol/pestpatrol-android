@@ -54,9 +54,6 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge(
-            statusBarStyle = SystemBarStyle.dark(Primary600.toArgb())
-        )
         setContent {
             PestPatrolTheme {
                 val navController = rememberNavController()
@@ -99,10 +96,10 @@ fun App(
                 )
             },
             floatingActionButton = {
-                AnimatedVisibility(visible = isBottomBarVisible) {
+                if(isBottomBarVisible) {
                     Column(
                         modifier = Modifier
-                            .offset(y = 60.dp),
+                            .offset(y = 72.dp),
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         IconButton(
