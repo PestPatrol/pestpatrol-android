@@ -1,7 +1,7 @@
 package com.feature.snap_detection_presentation.screen
 
 import android.graphics.Bitmap
-import android.util.Log
+import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.core.common.util.NetworkConnectivity
@@ -27,6 +27,8 @@ class SnapDetectionViewModel @Inject constructor(
 
     private val _imageBitmap = MutableStateFlow<Bitmap?>(null)
     val imageBitmap = _imageBitmap.asStateFlow()
+    private val _imageUri = MutableStateFlow<Uri?>(null)
+    val imageUri = _imageUri.asStateFlow()
 
     private val _predictData = Channel<PredictResponse?>()
     val predictData = _predictData.receiveAsFlow()
@@ -35,8 +37,12 @@ class SnapDetectionViewModel @Inject constructor(
     private val _predictError = Channel<UiText>()
     val predictError = _predictError.receiveAsFlow()
 
-    fun onTakePhoto(bitmap: Bitmap) {
+    fun setImageBitmap(bitmap: Bitmap) {
         _imageBitmap.value = bitmap
+    }
+
+    fun setImageUri(uri: Uri) {
+        _imageUri.value = uri
     }
 
     fun predict(bitmap: Bitmap) {
@@ -71,5 +77,40 @@ class SnapDetectionViewModel @Inject constructor(
                 }
             }
         })
+    }
+
+    fun predict(uri: Uri) {
+        networkConnectivity.checkInternetConnection(
+            object : NetworkConnectivity.ConnectivityCallback {
+                override fun onDetected(isConnected: Boolean) {
+                    if (isConnected) {
+                        snapDetectionUseCases
+                            .predictUseCase(uri)
+                            .onEach { result ->
+                                when (result) {
+                                    is Resource.Error -> {
+                                        _predictLoading.value = false
+                                        _predictError.send(result.uiText ?: UiText.unknownError())
+                                    }
+
+                                    is Resource.Loading -> {
+                                        _predictLoading.value = true
+                                    }
+
+                                    is Resource.Success -> {
+                                        _predictLoading.value = false
+                                        _predictData.send(result.data)
+                                    }
+                                }
+                            }
+                            .launchIn(viewModelScope)
+                        return
+                    }
+                    viewModelScope.launch {
+                        _predictError.send(UiText.networkError())
+                    }
+                }
+            }
+        )
     }
 }

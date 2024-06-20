@@ -50,7 +50,7 @@ fun PaddyCareItem(
     )
 
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .background(
                 color = Color.White,
@@ -64,7 +64,7 @@ fun PaddyCareItem(
             )
     ) {
         Row(
-            modifier = modifier
+            modifier = Modifier
                 .background(
                     color = Primary50,
                     shape = RoundedCornerShape(8.dp)

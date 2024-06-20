@@ -125,9 +125,6 @@ fun SplashScreen(
         viewModel.getToken()
     }
 
-    if (isLoading)
-        LoadingDialog()
-
     Box(
         modifier = Modifier
             .fillMaxSize()
