@@ -1,8 +1,10 @@
 package com.feature.home_data.mapper
 
 import com.feature.home_data.remote.dto.GetAllArticlesResponseDto
+import com.feature.home_data.remote.dto.PredictionHistoryResponseDto
 import com.feature.home_data.remote.dto.ProfileResponseDto
 import com.feature.home_domain.model.Article
+import com.feature.home_domain.model.PredictionHistoryItem
 import com.feature.home_domain.model.Profile
 
 fun GetAllArticlesResponseDto.toListOfArticle() = this.data?.map {
@@ -22,4 +24,11 @@ fun ProfileResponseDto.toProfile() = Profile(
     userId = this.userId.toString(),
     email = this.email.toString(),
     profPicLink = this.profPicLink.toString()
+)
+
+fun PredictionHistoryResponseDto.toListOfPredictionHistoryItem() = PredictionHistoryItem(
+    leafPictureLink = this.leafPictureLink.toString(),
+    createdAt = this.createdAt.toString(),
+    confidenceScore = this.confidenceScore ?: -1.0,
+    disease = this.disease.toString()
 )

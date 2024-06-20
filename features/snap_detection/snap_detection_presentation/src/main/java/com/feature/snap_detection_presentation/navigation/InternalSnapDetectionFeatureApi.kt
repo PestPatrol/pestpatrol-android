@@ -8,6 +8,7 @@ import com.core.common.navigation_constants.SnapDetectionFeature
 import com.feature.feature_api.FeatureApi
 import com.feature.snap_detection_presentation.screen.camera.CameraScreen
 import com.feature.snap_detection_presentation.screen.choose_image.ChooseImageScreen
+import com.feature.snap_detection_presentation.screen.gallery.PredictionGalleryScreen
 import com.feature.snap_detection_presentation.screen.prediction_result.PredictionResultScreen
 
 object InternalSnapDetectionFeatureApi : FeatureApi {
@@ -24,7 +25,7 @@ object InternalSnapDetectionFeatureApi : FeatureApi {
             }
 
             composable<SnapDetectionFeature.PredictionResultScreen> {
-
+                PredictionGalleryScreen(navController)
             }
         }
     }

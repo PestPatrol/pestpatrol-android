@@ -46,7 +46,7 @@ ucrop = "2.2.9"
 # Android Config
 targetSdk = "34"
 compileSdk = "34"
-minSdk = "24"
+minSdk = "26"
 versionCode = "1"
 versionName = "1.0"
 appcompat = "1.7.0"

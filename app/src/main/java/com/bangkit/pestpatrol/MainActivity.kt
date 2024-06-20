@@ -35,11 +35,13 @@ import com.bangkit.pestpatrol.navigation.NavigationProvider
 import com.bangkit.pestpatrol.ui.component.PestPatrolBottomNavBar
 import com.bangkit.pestpatrol.ui.theme.PestPatrolTheme
 import com.core.common.navigation_constants.SnapDetectionFeature
+import com.core.common.ui.Primary400
 import com.core.common.ui.Primary50
 import com.core.common.ui.Primary600
 import com.core.common.ui.SFProDisplayMedium
 import com.core.common.util.getRouteName
 import com.feature.home_presentation.util.BottomNavBarItem
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -53,6 +55,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             PestPatrolTheme {
+                val systemUiController = rememberSystemUiController()
+                systemUiController.setSystemBarsColor(Primary400)
                 val navController = rememberNavController()
                 App(
                     navHostController = navController,
@@ -93,7 +97,7 @@ fun App(
                 )
             },
             floatingActionButton = {
-                if(isBottomBarVisible) {
+                if (isBottomBarVisible) {
                     Column(
                         modifier = Modifier
                             .offset(y = 72.dp),

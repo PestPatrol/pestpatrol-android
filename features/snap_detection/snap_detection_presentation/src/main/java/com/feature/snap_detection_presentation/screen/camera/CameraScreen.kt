@@ -38,7 +38,6 @@ import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.core.common.navigation_constants.SnapDetectionFeature
 import com.core.common.resource.IconArrowBack
 import com.core.common.resource.IconCameraCenterGrid
 import com.core.common.resource.IconInformation
@@ -122,7 +121,7 @@ fun CameraScreen(
                                 override fun onCaptureSuccess(image: ImageProxy) {
                                     super.onCaptureSuccess(image)
                                     Log.e("IMAGE INGFO", "camera: ${image.toBitmap()}")
-                                    viewModel.onTakePhoto(image.toBitmap())
+                                    viewModel.setImageBitmap(image.toBitmap())
                                     viewModel.predict(image.toBitmap())
                                     cameraState = false
                                 }

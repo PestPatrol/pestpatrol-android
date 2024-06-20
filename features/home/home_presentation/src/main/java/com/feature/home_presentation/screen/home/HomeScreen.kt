@@ -154,7 +154,7 @@ fun HomeScreen(
             ) {
                 Column(
                     verticalArrangement = Arrangement.spacedBy(8.dp),
-                    modifier = Modifier.weight(2f)
+                    modifier = Modifier.weight(3f)
                 ) {
                     Text(
                         text = stringResource(R.string.hello_comma),
@@ -223,17 +223,6 @@ fun HomeScreen(
                                 )
                             }
                         )
-//                if (profile == null)
-//                    CircularProgressIndicator(modifier = Modifier.size(50.dp))
-//                else
-//                    AsyncImage(
-//                        model = profile?.profPicLink,
-//                        contentDescription = stringResource(id = ProfileIcon),
-//                        contentScale = ContentScale.FillBounds,
-//                        modifier = Modifier
-//                            .size(50.dp)
-//                            .clip(CircleShape),
-//                    )
                 }
             }
             Spacer(modifier = Modifier.height(12.dp))
@@ -335,17 +324,6 @@ fun HomeScreen(
                                 .width(275.dp)
                                 .height(225.dp),
                         )
-//                    NewBlog(
-//                        imageUrl = "https://img.etimg.com/thumb/width-1600,height-900,imgsize-98586,resizemode-75,msid-93695051/news/economy/agriculture/paddy-sowing-continues-to-lag-acreage-down-by-8-25-per-cent-till-august-18.jpg",
-//                        blogTag = "PlantTips $it",
-//                        blogDescription = "Ini dia tips menanam padi anti gagal panen! $it",
-//                        onClick = {
-//
-//                        },
-//                        modifier = Modifier
-//                            .width(250.dp)
-//                            .height(225.dp)
-//                    )
                     }
                 item {
                     Spacer(modifier = Modifier.width(16.dp))

@@ -181,7 +181,7 @@ fun ChooseImageScreen(
                     )
                     .padding(8.dp),
                 onClick = singleClick {
-
+                    navController.navigate(SnapDetectionFeature.PredictionResultScreen)
                 }
             ) {
                 Row(

@@ -26,4 +26,5 @@
     <string name="paddy_care">Paddy Care</string>
     <string name="dropdown">Dropdown</string>
     <string name="no_description">No Description</string>
+    <string name="choose_picture_from_gallery">Choose picture from gallery</string>
 </resources>
