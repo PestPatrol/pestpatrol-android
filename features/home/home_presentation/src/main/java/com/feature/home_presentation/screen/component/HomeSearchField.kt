@@ -1,19 +1,20 @@
 package com.feature.home_presentation.screen.component
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.core.common.resource.IconSearch
 import com.core.common.ui.HintTextColor
@@ -28,10 +29,11 @@ fun HomeSearchField(
     modifier: Modifier = Modifier,
     placeholderText: String = stringResource(id = R.string.search_paddy_dots),
 ) {
-    Box(
-        modifier = modifier
-            .clip(CircleShape)
-            .background(Color.White)
+    Card(
+        modifier = modifier,
+        shape = CircleShape,
+        elevation = CardDefaults.cardElevation(4.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.White)
     ) {
         TextField(
             value = value,
@@ -65,7 +67,8 @@ fun HomeSearchField(
                 fontFamily = SFProDisplayRegular,
                 color = PrimaryTextColor,
                 fontSize = 16.sp
-            )
+            ),
+            singleLine = true
         )
     }
 }

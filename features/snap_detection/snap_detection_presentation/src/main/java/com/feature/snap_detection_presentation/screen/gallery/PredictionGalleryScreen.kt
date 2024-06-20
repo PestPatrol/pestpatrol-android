@@ -151,7 +151,10 @@ fun PredictionGalleryScreen(
                 AsyncImage(
                     model = image,
                     contentDescription = stringResource(R.string.prediction_image),
-                    modifier = Modifier.clip(RoundedCornerShape(16.dp))
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(16.dp))
+                        .height(250.dp),
+                    contentScale = ContentScale.Crop
                 )
             else
                 Box(

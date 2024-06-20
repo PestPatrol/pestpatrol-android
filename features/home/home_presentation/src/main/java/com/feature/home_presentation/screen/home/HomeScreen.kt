@@ -154,7 +154,7 @@ fun HomeScreen(
             ) {
                 Column(
                     verticalArrangement = Arrangement.spacedBy(8.dp),
-                    modifier = Modifier.weight(2f)
+                    modifier = Modifier.weight(3f)
                 ) {
                     Text(
                         text = stringResource(R.string.hello_comma),
