@@ -16,4 +16,7 @@
     <string name="snap_history">Snap History</string>
     <string name="search_disease">Search Disease</string>
     <string name="select">Select</string>
+    <string name="history_item_picture">History Item Picture</string>
+    <string name="history_item_title">%s Paddy</string>
+    <string name="confidence_score_f">Confidence Score: %f</string>
 </resources>

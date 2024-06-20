@@ -31,8 +31,8 @@ class SnapHistoryViewModel @Inject constructor(
     val predictionLoading = _predictionLoading.asStateFlow()
     private val _predictionError = Channel<UiText>()
     val predictionError = _predictionError.receiveAsFlow()
-    private val _predictionData = Channel<List<PredictionHistoryItem>>()
-    val predictionData = _predictionData.receiveAsFlow()
+    private val _predictionData = MutableStateFlow<List<PredictionHistoryItem>>(emptyList())
+    val predictionData = _predictionData.asStateFlow()
 
     fun getPredictionHistory() {
         networkConnectivity.checkInternetConnection(object :
@@ -54,7 +54,7 @@ class SnapHistoryViewModel @Inject constructor(
 
                                 is Resource.Success -> {
                                     _predictionLoading.value = false
-                                    _predictionData.send(result.data ?: emptyList())
+                                    _predictionData.value = result.data ?: emptyList()
                                 }
                             }
                         }
