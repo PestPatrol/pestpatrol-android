@@ -16,4 +16,10 @@ sealed class HomeFeature {
 
     @Serializable
     data object ProfileScreen : HomeFeature()
+
+    @Serializable
+    data object ArticleScreen : HomeFeature()
+
+    @Serializable
+    data class ArticleDetailScreen(val articleId: String) : HomeFeature()
 }

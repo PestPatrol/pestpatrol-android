@@ -4,8 +4,10 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
+import androidx.navigation.toRoute
 import com.core.common.navigation_constants.HomeFeature
 import com.feature.feature_api.FeatureApi
+import com.feature.home_presentation.screen.article.ArticleScreen
 import com.feature.home_presentation.screen.home.HomeScreen
 import com.feature.home_presentation.screen.profile.ProfileScreen
 import com.feature.home_presentation.screen.snap_history.SnapHistoryScreen
@@ -26,6 +28,13 @@ object InternalHomeFeatureApi : FeatureApi {
             }
             composable<HomeFeature.ProfileScreen> {
                 ProfileScreen(navController = navController)
+            }
+            composable<HomeFeature.ArticleScreen> {
+                ArticleScreen(navController = navController)
+            }
+            composable<HomeFeature.ArticleDetailScreen> {
+                val args = it.toRoute<HomeFeature.ArticleDetailScreen>()
+
             }
         }
     }

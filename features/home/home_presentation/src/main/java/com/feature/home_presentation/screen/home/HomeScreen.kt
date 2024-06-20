@@ -82,7 +82,10 @@ fun HomeScreen(
         HomeMenuItem(
             iconPainter = painterResource(id = R.drawable.ic_p_blog),
             iconContentDesc = stringResource(R.string.p_blog),
-            menuTitle = stringResource(id = R.string.p_blog)
+            menuTitle = stringResource(id = R.string.p_blog),
+            onClick = {
+                navController.navigate(HomeFeature.ArticleScreen)
+            }
         ),
         HomeMenuItem(
             iconPainter = painterResource(id = R.drawable.ic_paddy_buddy),
@@ -292,7 +295,7 @@ fun HomeScreen(
                     color = Primary600,
                     modifier = Modifier
                         .clickable {
-
+                            navController.navigate(HomeFeature.ArticleScreen)
                         }
                 )
             }
