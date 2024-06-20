@@ -8,6 +8,8 @@ interface HomeRepository {
 
     suspend fun getAllArticles(): List<Article>
 
+    suspend fun getArticleById(articleId: String): Article
+
     suspend fun getProfile(): Profile
 
     suspend fun getPredictionHistory(): List<PredictionHistoryItem>

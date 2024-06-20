@@ -325,7 +325,7 @@ fun HomeScreen(
                             blogTag = article.category,
                             blogDescription = article.content,
                             onClick = {
-
+                                navController.navigate(HomeFeature.ArticleDetailScreen(article.articleId))
                             },
                             modifier = Modifier
                                 .width(275.dp)

@@ -1,5 +1,6 @@
 package com.feature.home_data.mapper
 
+import com.feature.home_data.remote.dto.ArticleDetailResponseDto
 import com.feature.home_data.remote.dto.GetAllArticlesResponseDto
 import com.feature.home_data.remote.dto.PredictionHistoryResponseDto
 import com.feature.home_data.remote.dto.ProfileResponseDto
@@ -31,4 +32,14 @@ fun PredictionHistoryResponseDto.toListOfPredictionHistoryItem() = PredictionHis
     createdAt = this.createdAt.toString(),
     confidenceScore = this.confidenceScore ?: -1.0,
     disease = this.disease.toString()
+)
+
+fun ArticleDetailResponseDto.toArticle() = Article(
+    articleId = this.articleId.toString(),
+    nanoseconds = this.createdAt?.nanoseconds ?: -1,
+    seconds = this.createdAt?.seconds ?: -1,
+    pictureLink = this.pictureLink.toString(),
+    category = this.category.toString(),
+    title = this.title.toString(),
+    content = this.content.toString()
 )

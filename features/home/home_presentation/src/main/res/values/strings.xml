@@ -25,4 +25,5 @@
     <string name="logout">Logout</string>
     <string name="logout_from_your_account">Logout from your account</string>
     <string name="favorite">Favorite</string>
+    <string name="p_blog_detail">P-Blog Detail</string>
 </resources>
