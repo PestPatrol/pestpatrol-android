@@ -55,4 +55,8 @@ class HomeRepositoryImpl(
         val error = globalErrorParser.parse(response.errorBody()?.string())
         throw Exception(error)
     }
+
+    override suspend fun logout() {
+        userDataStore.clearUserPreferences()
+    }
 }

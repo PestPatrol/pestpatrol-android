@@ -6,11 +6,14 @@ import kotlinx.serialization.Serializable
 sealed class HomeFeature {
 
     @Serializable
-    data object NestedRoute: HomeFeature()
+    data object NestedRoute : HomeFeature()
 
     @Serializable
-    data object HomeScreen: HomeFeature()
+    data object HomeScreen : HomeFeature()
 
     @Serializable
-    data object SnapHistoryScreen: HomeFeature()
+    data object SnapHistoryScreen : HomeFeature()
+
+    @Serializable
+    data object ProfileScreen : HomeFeature()
 }

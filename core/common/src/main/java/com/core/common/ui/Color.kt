@@ -1,6 +1,5 @@
 package com.core.common.ui
 
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 
@@ -47,7 +46,7 @@ val PrimaryGradient400 = Brush.linearGradient(
         Primary100
     )
 )
-val HistoryBackgroundGradient = Brush.verticalGradient(
+val PrimaryScreenBackgroundGradient = Brush.verticalGradient(
     colors = listOf(
         Primary500,
         Primary100,

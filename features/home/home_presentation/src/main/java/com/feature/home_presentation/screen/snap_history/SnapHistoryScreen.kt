@@ -1,6 +1,5 @@
 package com.feature.home_presentation.screen.snap_history
 
-import android.widget.Space
 import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -34,7 +33,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import com.core.common.ui.HintTextColor
-import com.core.common.ui.HistoryBackgroundGradient
+import com.core.common.ui.PrimaryScreenBackgroundGradient
 import com.core.common.ui.Primary25
 import com.core.common.ui.SFProDisplayBold
 import com.core.common.ui.SFProDisplayRegular
@@ -81,7 +80,7 @@ fun SnapHistoryScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(HistoryBackgroundGradient)
+            .background(PrimaryScreenBackgroundGradient)
     ) {
         Box(
             modifier = Modifier

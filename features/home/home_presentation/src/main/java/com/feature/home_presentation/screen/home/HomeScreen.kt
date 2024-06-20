@@ -41,6 +41,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import coil.compose.SubcomposeAsyncImage
+import com.core.common.navigation_constants.HomeFeature
 import com.core.common.navigation_constants.SnapDetectionFeature
 import com.core.common.resource.IconProfileRounded
 import com.core.common.resource.ProfileIconDescription
@@ -202,7 +203,10 @@ fun HomeScreen(
                                 .aspectRatio(1f)
                                 .size(50.dp)
                                 .clip(CircleShape)
-                                .align(Alignment.CenterEnd),
+                                .align(Alignment.CenterEnd)
+                                .clickable {
+                                    navController.navigate(HomeFeature.ProfileScreen)
+                                },
                             loading = {
                                 CircularProgressIndicator(
                                     color = Primary600,

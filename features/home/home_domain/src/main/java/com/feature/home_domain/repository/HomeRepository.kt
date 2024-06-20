@@ -11,4 +11,6 @@ interface HomeRepository {
     suspend fun getProfile(): Profile
 
     suspend fun getPredictionHistory(): List<PredictionHistoryItem>
+
+    suspend fun logout()
 }
