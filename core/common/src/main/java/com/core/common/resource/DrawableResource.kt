@@ -14,3 +14,4 @@ val IconInformation = R.drawable.ic_information
 val IconCameraCenterGrid = R.drawable.ic_camera_center_grid
 val IconArrowDown = R.drawable.ic_arrow_down
 val IconArrowUp = R.drawable.ic_arrow_up
+val IconLoveRounded = R.drawable.ic_love_rounded

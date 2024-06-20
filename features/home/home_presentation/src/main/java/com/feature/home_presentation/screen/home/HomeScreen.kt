@@ -41,6 +41,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import coil.compose.SubcomposeAsyncImage
+import com.core.common.navigation_constants.HomeFeature
 import com.core.common.navigation_constants.SnapDetectionFeature
 import com.core.common.resource.IconProfileRounded
 import com.core.common.resource.ProfileIconDescription
@@ -81,7 +82,10 @@ fun HomeScreen(
         HomeMenuItem(
             iconPainter = painterResource(id = R.drawable.ic_p_blog),
             iconContentDesc = stringResource(R.string.p_blog),
-            menuTitle = stringResource(id = R.string.p_blog)
+            menuTitle = stringResource(id = R.string.p_blog),
+            onClick = {
+                navController.navigate(HomeFeature.ArticleScreen)
+            }
         ),
         HomeMenuItem(
             iconPainter = painterResource(id = R.drawable.ic_paddy_buddy),
@@ -202,7 +206,10 @@ fun HomeScreen(
                                 .aspectRatio(1f)
                                 .size(50.dp)
                                 .clip(CircleShape)
-                                .align(Alignment.CenterEnd),
+                                .align(Alignment.CenterEnd)
+                                .clickable {
+                                    navController.navigate(HomeFeature.ProfileScreen)
+                                },
                             loading = {
                                 CircularProgressIndicator(
                                     color = Primary600,
@@ -288,7 +295,7 @@ fun HomeScreen(
                     color = Primary600,
                     modifier = Modifier
                         .clickable {
-
+                            navController.navigate(HomeFeature.ArticleScreen)
                         }
                 )
             }

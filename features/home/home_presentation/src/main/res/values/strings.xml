@@ -19,4 +19,10 @@
     <string name="history_item_picture">History Item Picture</string>
     <string name="history_item_title">%s Paddy</string>
     <string name="confidence_score_f">Confidence Score: %f</string>
+    <string name="back">Back</string>
+    <string name="my_profile">My Profile</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="logout">Logout</string>
+    <string name="logout_from_your_account">Logout from your account</string>
+    <string name="favorite">Favorite</string>
 </resources>
