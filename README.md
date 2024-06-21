@@ -12,9 +12,11 @@
 
 ## Features
 - Authentication (Login & Register)
-- Feature to recognize pest on Paddy
+- Feature to recognize pest on paddy
 - Feature to give recommendation on pest treatment
 - Feature to show articles regarding crop pest
+- Reminder for doing pest treatment (On Development)
+- Chatbot to help user acknowledging pest on paddy interactively (On Development)
 
 ## Libraries:
 - [Android Jetpack Compose](https://developer.android.com/jetpack/compose)
@@ -22,6 +24,7 @@
 - [Retrofit](https://square.github.io/retrofit/)
 - [Okhttp 3](https://square.github.io/okhttp/)
 - [CameraX](https://developer.android.com/training/camerax)
+- [Datastore](https://developer.android.com/jetpack/androidx/releases/datastore)
 - [Dagger-Hilt](https://developer.android.com/training/dependency-injection/hilt-android#setup)
 
 ## Project Structure
