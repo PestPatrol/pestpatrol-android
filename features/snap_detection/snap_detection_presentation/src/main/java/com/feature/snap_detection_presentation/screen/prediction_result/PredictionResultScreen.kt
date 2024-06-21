@@ -214,6 +214,7 @@ fun PredictionResultScreen(
                     fontFamily = SFProDisplayRegular,
                     fontSize = 14.sp,
                     color = RedPrediction,
+                    lineHeight = 16.sp
                 )
             }
         }
