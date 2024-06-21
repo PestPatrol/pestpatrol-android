@@ -4,6 +4,7 @@ import coil.request.NullRequestDataException
 import com.core.common.util.formatBearerToken
 import com.core.network.data.GlobalErrorParser
 import com.core.network.data_store.UserDataStore
+import com.feature.home_data.mapper.toArticle
 import com.feature.home_data.mapper.toListOfArticle
 import com.feature.home_data.mapper.toListOfPredictionHistoryItem
 import com.feature.home_data.mapper.toProfile
@@ -25,6 +26,20 @@ class HomeRepositoryImpl(
         val response = homeService.getAllArticles(token.formatBearerToken())
         if (response.isSuccessful) {
             response.body()?.let { data -> return data.toListOfArticle() }
+        }
+        val error = globalErrorParser.parse(response.errorBody()?.string())
+        throw Exception(error)
+    }
+
+    override suspend fun getArticleById(articleId: String): Article {
+        val token = userDataStore.getToken().first()
+        val response = homeService.getArticleById(
+            token = token.formatBearerToken(),
+            articleId = articleId
+        )
+        if (response.isSuccessful) {
+            response.body()
+                ?.let { data -> return data.data?.toArticle() ?: throw NullPointerException() }
         }
         val error = globalErrorParser.parse(response.errorBody()?.string())
         throw Exception(error)

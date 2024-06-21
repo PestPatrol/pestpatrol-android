@@ -195,7 +195,7 @@ fun PredictionResultScreen(
                         .fillMaxWidth()
                         .height(24.dp)
                 )
-            else
+            else {
                 Text(
                     text = predictData?.confidenceScore.toString(),
                     fontFamily = SFProDisplayRegular,
@@ -209,6 +209,14 @@ fun PredictionResultScreen(
                         )
                         .padding(vertical = 8.dp, horizontal = 8.dp)
                 )
+                Text(
+                    text = stringResource(R.string.pestpatrol_might_make_mistakes_please_do_some_re_checking),
+                    fontFamily = SFProDisplayRegular,
+                    fontSize = 14.sp,
+                    color = RedPrediction,
+                    lineHeight = 16.sp
+                )
+            }
         }
         if (!healthyStatus && !predictLoading)
             item {

@@ -2,6 +2,7 @@ package com.feature.home_domain.di
 
 import com.feature.home_domain.repository.HomeRepository
 import com.feature.home_domain.use_case.GetAllArticlesUseCase
+import com.feature.home_domain.use_case.GetArticleByIdUseCase
 import com.feature.home_domain.use_case.GetPredictionHistoryUseCase
 import com.feature.home_domain.use_case.GetProfileUseCase
 import com.feature.home_domain.use_case.HomeUseCases
@@ -22,6 +23,7 @@ object HomeDomainModule {
         getAllArticlesUseCase = GetAllArticlesUseCase(homeRepository),
         getProfileUseCase = GetProfileUseCase(homeRepository),
         getPredictionHistoryUseCase = GetPredictionHistoryUseCase(homeRepository),
-        logoutUseCase = LogoutUseCase(homeRepository)
+        logoutUseCase = LogoutUseCase(homeRepository),
+        getArticleByIdUseCase = GetArticleByIdUseCase(homeRepository)
     )
 }
