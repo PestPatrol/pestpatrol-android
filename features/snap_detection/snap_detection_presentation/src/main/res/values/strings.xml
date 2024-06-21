@@ -27,4 +27,5 @@
     <string name="dropdown">Dropdown</string>
     <string name="no_description">No Description</string>
     <string name="choose_picture_from_gallery">Choose picture from gallery</string>
+    <string name="pestpatrol_might_make_mistakes_please_do_some_re_checking">PestPatrol might make mistakes. Please do some re-checking.</string>
 </resources>

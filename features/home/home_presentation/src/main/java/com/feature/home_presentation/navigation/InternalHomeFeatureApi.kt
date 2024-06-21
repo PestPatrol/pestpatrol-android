@@ -5,7 +5,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import androidx.navigation.toRoute
+import com.core.common.navigation_constants.ComingSoonFeature
 import com.core.common.navigation_constants.HomeFeature
+import com.core.common.ui.components.ComingSoonScreen
 import com.feature.feature_api.FeatureApi
 import com.feature.home_presentation.screen.article.ArticleScreen
 import com.feature.home_presentation.screen.article_detail.ArticleDetailScreen
@@ -39,6 +41,9 @@ object InternalHomeFeatureApi : FeatureApi {
                     articleId = args.articleId,
                     navController = navController
                 )
+            }
+            composable<ComingSoonFeature> {
+                ComingSoonScreen(navController)
             }
         }
     }

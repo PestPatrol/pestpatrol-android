@@ -41,6 +41,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import coil.compose.SubcomposeAsyncImage
+import com.core.common.navigation_constants.ComingSoonFeature
 import com.core.common.navigation_constants.HomeFeature
 import com.core.common.navigation_constants.SnapDetectionFeature
 import com.core.common.resource.IconProfileRounded
@@ -77,7 +78,10 @@ fun HomeScreen(
         HomeMenuItem(
             iconPainter = painterResource(id = R.drawable.ic_reminder),
             iconContentDesc = stringResource(R.string.reminder),
-            menuTitle = stringResource(id = R.string.reminder)
+            menuTitle = stringResource(id = R.string.reminder),
+            onClick = {
+                navController.navigate(ComingSoonFeature)
+            }
         ),
         HomeMenuItem(
             iconPainter = painterResource(id = R.drawable.ic_p_blog),
@@ -90,7 +94,10 @@ fun HomeScreen(
         HomeMenuItem(
             iconPainter = painterResource(id = R.drawable.ic_paddy_buddy),
             iconContentDesc = stringResource(R.string.paddy_buddy),
-            menuTitle = stringResource(id = R.string.paddy_buddy)
+            menuTitle = stringResource(id = R.string.paddy_buddy),
+            onClick = {
+                navController.navigate(ComingSoonFeature)
+            }
         ),
     )
     val profile by viewModel.profileData.collectAsStateWithLifecycle(initialValue = null)
