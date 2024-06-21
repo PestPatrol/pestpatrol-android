@@ -2,7 +2,7 @@
 
 # Pestpatrol Android
 
-**PestPatrol** is an Android application designed for early detection of rice crop diseases using advanced machine learning models. The Application is built using Kotlin with Kotlin, Jetpack Compose, Dagger-Hilt and Clean Architecture.
+**PestPatrol** is an Android application designed for early detection of rice crop diseases using advanced machine learning models. The Application is built using Kotlin, Jetpack Compose, Dagger-Hilt and Clean Architecture.
 
 ## Table of Content
 - [Features](#features)
@@ -45,4 +45,8 @@
     - snap_detection_presentation
 
 ## How to Initiate the Project
-open this project with Android Studio and add BASE_URL variable (please contact us for this value) in the `local.properties` file.
+Open this project with Android Studio and add BASE_URL variable (please contact us for this value) in the `local.properties` file.
+```properties
+sdk.dir=YOUR SDK LOCATION
+BASE_URL=PUT THE BASE_URL VALUE HERE
+```
