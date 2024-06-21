@@ -285,19 +285,32 @@ fun PredictionGalleryScreen(
                         fontFamily = SFProDisplayMedium
                     )
                     Spacer(modifier = Modifier.height(8.dp))
-                    Text(
-                        text = predictData?.disease.toString(),
-                        fontFamily = SFProDisplayRegular,
-                        fontSize = 14.sp,
-                        color = Primary600,
+                    Row(
                         modifier = Modifier
-                            .fillMaxWidth()
-                            .background(
-                                color = Primary50,
-                                shape = RoundedCornerShape(8.dp)
-                            )
-                            .padding(vertical = 8.dp, horizontal = 8.dp)
-                    )
+                            .fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        AsyncImage(
+                            model = predictData?.mainCause?.pictureLink,
+                            contentDescription = stringResource(R.string.imprecise_cultural_techniques),
+                            contentScale = ContentScale.Crop,
+                            modifier = Modifier.size(36.dp)
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(
+                            text = predictData?.mainCause?.title.toString(),
+                            fontFamily = SFProDisplayRegular,
+                            fontSize = 14.sp,
+                            color = Primary600,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .background(
+                                    color = Primary50,
+                                    shape = RoundedCornerShape(8.dp)
+                                )
+                                .padding(vertical = 8.dp, horizontal = 8.dp)
+                        )
+                    }
                     Spacer(modifier = Modifier.height(8.dp))
                     Text(
                         text = stringResource(R.string.imprecise_cultural_techniques_colon),
